@@ -1,4 +1,5 @@
 import os
+import re
 from typing import List, Dict
 
 from sqlalchemy import insert
@@ -49,9 +50,14 @@ def ingest_filings(
             with open(filing_path, "r", errors="ignore") as f:
                 filing_text = f.read()
 
-            chunks = chunk_text(filing_text)
+            # ------------------------------------
+            # CLEAN SEC TEXT (IMPORTANT FIX)
+            # ------------------------------------
+            clean_text = clean_sec_text(filing_text)
 
-            print(f"✂️ Total chunks: {len(chunks)}")
+            chunks = chunk_text(clean_text)
+
+            print(f"✂️ Total chunks (pre-filter): {len(chunks)}")
 
             # TEMP DEMO LIMIT
             chunks = chunks[:100]
@@ -59,7 +65,7 @@ def ingest_filings(
             print(f"✂️ Using first {len(chunks)} chunks for demo")
 
             # --------------------------------------------------
-            # IMPORTANT FIX: reset per file
+            # RESET PER FILE (FIX FOR NameError + isolation)
             # --------------------------------------------------
             rows_for_file: List[Dict] = []
 
@@ -76,6 +82,12 @@ def ingest_filings(
                 batch_embeddings = get_embeddings(chunk_batch)
 
                 for chunk, embedding in zip(chunk_batch, batch_embeddings):
+
+                    # ------------------------------------
+                    # BOILERPLATE FILTER (IMPORTANT)
+                    # ------------------------------------
+                    if is_boilerplate(chunk):
+                        continue
 
                     rows_for_file.append(
                         {
@@ -112,6 +124,48 @@ def ingest_filings(
 
     finally:
         db.close()
+
+
+# --------------------------------------------------
+# CLEANING
+# --------------------------------------------------
+
+def clean_sec_text(text: str) -> str:
+    """
+    Remove SEC headers + SGML/HTML noise before chunking.
+    """
+
+    # Keep content after SEC header if present
+    parts = re.split(r"<SEC-HEADER>", text, flags=re.IGNORECASE)
+    text = parts[-1] if parts else text
+
+    # Remove all SGML/HTML tags
+    text = re.sub(r"<[^>]+>", " ", text)
+
+    # Normalize whitespace
+    text = re.sub(r"\s+", " ", text)
+
+    return text.strip()
+
+
+def is_boilerplate(chunk: str) -> bool:
+    """
+    Filters out non-informative SEC metadata chunks.
+    """
+
+    junk_signals = [
+        "accession number",
+        "conformed submission",
+        "public document count",
+        "mail address",
+        "former company",
+        "sec-header",
+        "document",
+    ]
+
+    text = chunk.lower()
+
+    return sum(sig in text for sig in junk_signals) >= 2
 
 
 # --------------------------------------------------

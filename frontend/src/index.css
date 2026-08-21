@@ -1,0 +1,400 @@
+/* =========================
+   Global
+   ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fa;
+  color: #1f2937;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+
+/* =========================
+   Dashboard
+   ========================= */
+
+.dashboard {
+  min-height: 100vh;
+}
+
+.dashboard-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+
+/* =========================
+   Header
+   ========================= */
+
+.dashboard-header {
+  background: #111827;
+  color: white;
+  padding: 32px 48px;
+}
+
+.dashboard-header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.dashboard-header p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+
+/* =========================
+   Search Panel
+   ========================= */
+
+.search-panel {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+
+/* =========================
+   Company Selector
+   ========================= */
+
+.company-selector {
+  margin-bottom: 20px;
+}
+
+.company-selector label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.company-selector select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: white;
+}
+
+
+/* =========================
+   Search Bar
+   ========================= */
+
+.search-bar {
+  display: flex;
+  gap: 12px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.search-bar button {
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #1d4ed8;
+}
+
+.search-bar button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   Results
+   ========================= */
+
+.results {
+  margin-top: 24px;
+}
+
+
+/* =========================
+   Answer Card
+   ========================= */
+
+.answer-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.answer-card h2 {
+  margin-top: 0;
+}
+
+.answer-text {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.answer-text p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.answer-text ul {
+  padding-left: 24px;
+}
+
+.answer-text li {
+  margin-bottom: 8px;
+}
+
+
+/* =========================
+   Sources Section
+   ========================= */
+
+.sources-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.sources-section h2 {
+  margin-top: 0;
+}
+
+.sources-description {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+
+/* =========================
+   Source Cards
+   ========================= */
+
+.sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.source-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+
+/* =========================
+   Source Card Header
+   ========================= */
+
+.source-card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.source-title h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+}
+
+
+/* =========================
+   Source Metadata
+   ========================= */
+
+.source-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.source-badge {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   Source Content
+   ========================= */
+
+.source-content {
+  padding: 24px;
+}
+
+.source-label {
+  margin: 0 0 12px 0;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.source-text {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+
+  font-size: 14px;
+  line-height: 1.7;
+  color: #334155;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.source-text {
+  max-height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.source-text.expanded {
+  max-height: none;
+}
+
+.source-toggle {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.source-toggle:hover {
+  background: #f3f4f6;
+}.source-text {
+  max-height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.source-text.expanded {
+  max-height: none;
+}
+
+.source-toggle {
+  margin-top: 12px;
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.source-toggle:hover {
+  background: #f3f4f6;
+}
+
+
+/* =========================
+   Responsive
+   ========================= */
+
+@media (max-width: 700px) {
+
+  .dashboard-header {
+    padding: 24px;
+  }
+
+  .dashboard-content {
+    padding: 24px 16px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar button {
+    width: 100%;
+  }
+
+}
+
+/* =========================
+   Source Tables
+   ========================= */
+
+.source-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+.source-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: white;
+}
+
+.source-table th,
+.source-table td {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  text-align: left;
+  vertical-align: top;
+}
+
+.source-table th {
+  background: #f1f5f9;
+  font-weight: 600;
+}
+
+.source-table tr:nth-child(even) {
+  background: #f8fafc;
+}
+
+.source-text p {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.source-text ul,
+.source-text ol {
+  padding-left: 24px;
+}
+
+.source-text li {
+  margin-bottom: 6px;
+}

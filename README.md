@@ -9,11 +9,17 @@ The project combines a **FastAPI/Python backend**, **PostgreSQL + pgvector**, an
 
 ---
 
+## Application
+
+### Research Dashboard
+
 <img width="1916" height="911" alt="image" src="https://github.com/user-attachments/assets/310afaab-40d7-4e6d-8e18-d24bcbc17ffd" />
 
+### AI Analysis
 
 <img width="1917" height="905" alt="image" src="https://github.com/user-attachments/assets/7f0d803d-bba6-4455-b68d-d7579dad2728" />
 
+### Source Documents
 
 <img width="1917" height="910" alt="image" src="https://github.com/user-attachments/assets/59afe771-ba2b-4839-91dd-9ad5b891f106" />
 
